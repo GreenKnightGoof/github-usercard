@@ -2,7 +2,25 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+// axios.get('https://api.github.com/users/GreenKnightGoof')
+//   .then(() => {
+//     console.log(axios);
+//   })
+//   .catch((err) => {
+//     console.log('The data was not returned', err);
+//   });
+axios.get('https://api.github.com/users/GreenKnightGoof')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -45,6 +63,42 @@ const followersArray = [];
 </div>
 
 */
+
+function singleObjFunc(object){
+  const Card = document.createElement('div')
+  Card.classList.add('card');
+
+  const userIMG = document.createElement('img')
+  userIMG.appendChild(Image)
+
+  const cardInfo = document.createElement('div')
+  cardInfo.classList.add('card-info');
+
+  const name = document.createElement('h3')
+  name.classList.add('name');
+  name.textContent = object.name;
+
+  const userName = document.createElement('p')
+  userName.classList.add('paragraphElements')
+
+  const location = document.createElement('p')
+  cardInfo.appendChild(location)
+  location.textContent = `Location: ${object.location}`
+
+  const profile = document.createElement('p')
+  cardInfo.appendChild(profile)
+
+  const followers = document.createElement('p')
+  cardInfo.appendChild(followers)
+
+  const following = document.createElement('p')
+  cardInfo.appendChild(following)
+
+  const bio = document.createElement('p')
+  cardInfo.appendChild(bio)
+
+
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
