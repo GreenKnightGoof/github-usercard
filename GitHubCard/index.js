@@ -2,13 +2,7 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-// axios.get('https://api.github.com/users/GreenKnightGoof')
-//   .then(() => {
-//     console.log(axios);
-//   })
-//   .catch((err) => {
-//     console.log('The data was not returned', err);
-//   });
+
 const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'GreenKnightGoof'];
 const cards = document.querySelector('.cards')
 
@@ -19,10 +13,30 @@ followersArray.forEach((user) => {
     cards.appendChild(userComponent)
     console.log(response.data);
   })
-  .catch(function (error) {
-    console.log(error);
-  })
+
+  .catch(error => {
+    console.log('The data did not return successfully', error);
+  }) 
+   
+ 
  });
+
+
+// axios.get(`https://api.github.com/users/GreenKnightGoof`)
+//   .then(function (response) {
+//     // handle success
+//     console.log(response);
+//   })
+//   .catch(function (error) {
+//     // handle error
+//     console.log(error);
+//   })
+//   .then(function () {
+//     // always executed
+//   });
+
+
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -68,14 +82,15 @@ followersArray.forEach((user) => {
 function cardMaker(object){
   const card = document.createElement('div')
   card.classList.add('card');
+  
 
   const userIMG = document.createElement('img')
   userIMG.src = `${object.avatar_url}`
-  userIMG.appendChild(userIMG)
+  card.appendChild(userIMG)
 
   const cardInfo = document.createElement('div')
   cardInfo.classList.add('card-info');
-  cardInfo.appendChild(cardInfo)
+  card.appendChild(cardInfo)
 
   const name = document.createElement('h3')
   name.classList.add('name');
@@ -92,23 +107,24 @@ function cardMaker(object){
   cardInfo.appendChild(location)
 
   const profile = document.createElement('p')
-  profile.textContent = `Profile: ${object.html_url}`
+  profile.textContent = `Profile: `
   cardInfo.appendChild(profile)
 
   const anchor = document.createElement('a')
   anchor.href =`${object.html_url}`
+  anchor.textContent = `${object.html_url}`
   profile.appendChild(anchor) 
 
   const followers = document.createElement('p')
-  followers.textContent = `Followers: ${object.followers_url}`
+  followers.textContent = `Followers: ${object.followers}`
   cardInfo.appendChild(followers)
 
   const following = document.createElement('p')
-  following.textContent = `Following: ${object.following_url}`
+  following.textContent = `Following: ${object.following}`
   cardInfo.appendChild(following)
 
   const bio = document.createElement('p')
-  following.textContent = `Bio: ${object.bio}`
+  bio.textContent = `Bio: ${object.bio}`
   cardInfo.appendChild(bio)
 
   return card;
