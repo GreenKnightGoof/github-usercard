@@ -3,7 +3,7 @@
            https://api.github.com/users/<your name>
 */
 
-const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'GreenKnightGoof'];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'kdneldor'];
 const cards = document.querySelector('.cards')
 
 followersArray.forEach((user) => {
