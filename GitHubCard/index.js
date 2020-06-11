@@ -3,40 +3,30 @@
            https://api.github.com/users/<your name>
 */
 
-const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'GreenKnightGoof'];
-const cards = document.querySelector('.cards')
+const followersArray = [
+  "tetondan",
+  "dustinmyers",
+  "justsml",
+  "luishrd",
+  "bigknell",
+  "kdneldor",
+  "Robert-Lark",
+];
+const cards = document.querySelector(".cards");
 
 followersArray.forEach((user) => {
-  axios.get(`https://api.github.com/users/${user}`)
-  .then(response => {
-    const userComponent = cardMaker(response.data);
-    cards.appendChild(userComponent)
-    console.log(response.data);
-  })
+  axios
+    .get(`https://api.github.com/users/${user}`)
+    .then((response) => {
+      const userComponent = cardMaker(response.data);
+      cards.appendChild(userComponent);
+      console.log(response.data);
+    })
 
-  .catch(error => {
-    console.log('The data did not return successfully', error);
-  }) 
-   
- 
- });
-
-
-// axios.get(`https://api.github.com/users/GreenKnightGoof`)
-//   .then(function (response) {
-//     // handle success
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log(error);
-//   })
-//   .then(function () {
-//     // always executed
-//   });
-
-
-
+    .catch((error) => {
+      console.log("The data did not return successfully", error);
+    });
+});
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -58,7 +48,6 @@ followersArray.forEach((user) => {
           user, and adding that card to the DOM.
 */
 
-
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
@@ -79,64 +68,52 @@ followersArray.forEach((user) => {
 
 */
 
-function cardMaker(object){
-  const card = document.createElement('div')
-  card.classList.add('card');
-  
+function cardMaker(object) {
+  const cardElement = document.createElement("div");
+  cardElement.classList.add("card");
 
-  const userIMG = document.createElement('img')
-  userIMG.src = `${object.avatar_url}`
-  card.appendChild(userIMG)
+  const userIMG = document.createElement("img");
+  userIMG.src = `${object.avatar_url}`;
+  cardElement.appendChild(userIMG);
 
-  const cardInfo = document.createElement('div')
-  cardInfo.classList.add('card-info');
-  card.appendChild(cardInfo)
+  const cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+  cardElement.appendChild(cardInfo);
 
-  const name = document.createElement('h3')
-  name.classList.add('name');
-  name.textContent = `${object.name}`
-  cardInfo.appendChild(name)
+  const nameElement = document.createElement("h3");
+  nameElement.classList.add("name");
+  nameElement.textContent = `${object.name}`;
+  cardInfo.appendChild(nameElement);
 
-  const userName = document.createElement('p')
-  userName.classList.add('username')
-  userName.textContent = `${object.login}`
-  cardInfo.appendChild(userName)
+  const userName = document.createElement("p");
+  userName.classList.add("username");
+  userName.textContent = `${object.login}`;
+  cardInfo.appendChild(userName);
 
-  const location = document.createElement('p')
-  location.textContent = `Location: ${object.location}`
-  cardInfo.appendChild(location)
+  const locationElement = document.createElement("p");
+  locationElement.textContent = `Location: ${object.location}`;
+  cardInfo.appendChild(locationElement);
 
-  const profile = document.createElement('p')
-  profile.textContent = `Profile: `
-  cardInfo.appendChild(profile)
+  const profile = document.createElement("p");
+  profile.textContent = `Profile: `;
+  cardInfo.appendChild(profile);
 
-  const anchor = document.createElement('a')
-  anchor.href =`${object.html_url}`
-  anchor.textContent = `${object.html_url}`
-  profile.appendChild(anchor) 
+  const anchorElement = document.createElement("a");
+  anchorElement.href = `${object.html_url}`;
+  anchorElement.textContent = `${object.html_url}`;
+  profile.appendChild(anchorElement);
 
-  const followers = document.createElement('p')
-  followers.textContent = `Followers: ${object.followers}`
-  cardInfo.appendChild(followers)
+  const followersElement = document.createElement("p");
+  followersElement.textContent = `Followers: ${object.followers}`;
+  cardInfo.appendChild(followersElement);
 
-  const following = document.createElement('p')
-  following.textContent = `Following: ${object.following}`
-  cardInfo.appendChild(following)
+  const followingElement = document.createElement("p");
+  followingElement.textContent = `Following: ${object.following}`;
+  cardInfo.appendChild(followingElement);
 
-  const bio = document.createElement('p')
-  bio.textContent = `Bio: ${object.bio}`
-  cardInfo.appendChild(bio)
+  const bioElement = document.createElement("p");
+  bioElement.textContent = `Bio: ${object.bio}`;
+  cardInfo.appendChild(bioElement);
 
-  return card;
+  return cardElement;
 }
-
-/* List of LS Instructors Github username's: 
-  tetondan
-  dustinmyers
-  justsml
-  luishrd
-  bigknell
-*/
-
-
-
