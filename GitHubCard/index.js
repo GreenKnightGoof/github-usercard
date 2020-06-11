@@ -79,10 +79,10 @@ function cardMaker(object) {
   cardInfo.classList.add("card-info");
   cardElement.appendChild(cardInfo);
 
-  const name = document.createElement("h3");
-  name.classList.add("name");
-  name.textContent = `${object.name}`;
-  cardInfo.appendChild(name);
+  const nameElement = document.createElement("h3");
+  nameElement.classList.add("name");
+  nameElement.textContent = `${object.name}`;
+  cardInfo.appendChild(nameElement);
 
   const userName = document.createElement("p");
   userName.classList.add("username");
@@ -97,22 +97,22 @@ function cardMaker(object) {
   profile.textContent = `Profile: `;
   cardInfo.appendChild(profile);
 
-  const anchor = document.createElement("a");
-  anchor.href = `${object.html_url}`;
-  anchor.textContent = `${object.html_url}`;
-  profile.appendChild(anchor);
+  const anchorElement = document.createElement("a");
+  anchorElement.href = `${object.html_url}`;
+  anchorElement.textContent = `${object.html_url}`;
+  profile.appendChild(anchorElement);
 
-  const followers = document.createElement("p");
-  followers.textContent = `Followers: ${object.followers}`;
-  cardInfo.appendChild(followers);
+  const followersElement = document.createElement("p");
+  followersElement.textContent = `Followers: ${object.followers}`;
+  cardInfo.appendChild(followersElement);
 
-  const following = document.createElement("p");
-  following.textContent = `Following: ${object.following}`;
-  cardInfo.appendChild(following);
+  const followingElement = document.createElement("p");
+  followingElement.textContent = `Following: ${object.following}`;
+  cardInfo.appendChild(followingElement);
 
-  const bio = document.createElement("p");
-  bio.textContent = `Bio: ${object.bio}`;
-  cardInfo.appendChild(bio);
+  const bioElement = document.createElement("p");
+  bioElement.textContent = `Bio: ${object.bio}`;
+  cardInfo.appendChild(bioElement);
 
   return cardElement;
 }
