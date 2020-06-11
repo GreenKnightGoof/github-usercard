@@ -10,6 +10,7 @@ const followersArray = [
   "luishrd",
   "bigknell",
   "kdneldor",
+  "Robert-Lark",
 ];
 const cards = document.querySelector(".cards");
 
